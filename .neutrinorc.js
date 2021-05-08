@@ -2,6 +2,8 @@ const airbnb = require('@neutrinojs/airbnb');
 const react = require('@neutrinojs/react');
 const jest = require('@neutrinojs/jest');
 
+require('dotenv').config();  // Load in .env file, if present
+
 module.exports = {
   options: {
     root: __dirname,
