@@ -35,6 +35,7 @@ function App() {
             href="https://tccc.whereby.com/junction"
             className="btn btn-outline-primary"
             role="button"
+            target="_PARENT"
           >
             Go to Support Desk
           </a>
@@ -70,6 +71,7 @@ function App() {
                 "btn-warning": item.status === "FULL",
               })}
               role="button"
+              target="_PARENT"
             >
               Go to {item.name}
             </a>
