@@ -20,6 +20,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "~bootstrap/scss/helpers";
 @import "~bootstrap/scss/utilities/api";
 
+body {
+  background-color: #F3F5F7;
+}
+
 .App {
   padding: 20px;
 
