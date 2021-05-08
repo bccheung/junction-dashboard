@@ -1,9 +1,37 @@
-@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/functions";
+
+$success: #28a745;
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+$custom-colors: (
+  "primary": $purple
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/utilities/api";
 
 .App {
   padding: 20px;
 
-  .room-list {
+  .btn.disabled {
+    opacity: 0.25;
+  }
+
+  .btn-success {
+    color: $white;
+  }
+
+  .room-list, .help-desk {
     h4 {
       margin-bottom: 0.25rem;
     }
@@ -13,10 +41,22 @@
     }
   }
 
+  .help-desk svg symbol{
+    fill: $purple;
+  }
+
+  .room-participants p {
+    margin-bottom: 0.25rem !important;
+  }
+
   @include media-breakpoint-down(md) {
     .room-info {
       flex-grow: 1;
       max-width: 300px;
+    }
+
+    .help-desk .room-info {
+      max-width: none;
     }
 
     .room-participants {

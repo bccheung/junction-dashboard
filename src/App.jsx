@@ -23,17 +23,37 @@ function App() {
 
   return (
     <div className="App">
+      <div className="alert alert-primary shadow-sm p-3 mb-3 d-flex align-items-center flex-wrap help-desk">
+        <div className="pe-5 room-info flex-grow-1">
+          <h4>First time joining us or need help?</h4>
+          <p>
+            The <em>Junction Support Desk</em> is here to help!
+          </p>
+        </div>
+        <div className="room-link">
+          <a
+            href="https://tccc.whereby.com/junction"
+            className="btn btn-outline-primary"
+            role="button"
+          >
+            Go to Support Desk
+          </a>
+        </div>
+      </div>
+      <h1 className="display-5 mb-3">Junction Rooms</h1>
       {data.map((item, i) => (
         // eslint-disable-next-line
-        <div className="border shadow-sm p-3 mb-2 d-flex align-items-center flex-wrap room-list" key={`key-${i}`}>
+        <div className="border rounded-3 shadow-sm p-3 mb-2 d-flex align-items-center flex-wrap room-list" key={`key-${i}`}>
           <div className="pe-5 room-info">
             <h4>{item.name}</h4>
-            <p>
-              <small className="text-muted">Led by: </small>
-              <strong>{item.leads}</strong>
-            </p>
+            {item.leads === "" ? null : (
+              <p>
+                <small className="text-muted">Led by: </small>
+                <strong>{item.leads}</strong>
+              </p>
+            )}
           </div>
-          <div className="room-participants display-5">
+          <div className="room-participants display-6">
             {item.status === "CLOSED" ? (
               <p className="text-danger">Closed</p>
             ) : item.status === "FULL" ? (
@@ -56,7 +76,16 @@ function App() {
           </div>
         </div>
       ))}
-      {data.length === 0 ? null : (
+      {data.length === 0 ? (
+        <div className="d-flex align-items-center mt-3">
+          <div
+            className="spinner-border me-2"
+            role="status"
+            aria-hidden="true"
+          />
+          Loading Junction room list. Please wait a moment...
+        </div>
+      ) : (
         <p className="fw-light">
           <small>Last updated: {lastUpdate.toLocaleString()}</small>
         </p>
