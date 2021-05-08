@@ -12,13 +12,13 @@ function App() {
       Tabletop.init({
         key: process.env.GSPREADSHEET_ID,
         simpleSheet: true,
-      })
+      }) // get data from Google Sheets
         .then((response) => {
           setData(response);
           setLastUpdate(new Date());
         })
         .catch((error) => console.warn(error));
-    }, 10000);
+    }, 10000); // update every 10 seconds
   }, []);
 
   return (
