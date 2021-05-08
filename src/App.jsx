@@ -1,8 +1,8 @@
-import { hot } from 'react-hot-loader';
-import React from 'react';
-import './App.css';
+import { hot } from "react-hot-loader";
+import React from "react";
+import "./App.css";
 
-const message = 'Welcome to junction-dashboard';
+const message = "Welcome to junction-dashboard";
 const App = () => (
   <div className="App">
     <h1>{message}</h1>
