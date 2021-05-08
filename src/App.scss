@@ -1,0 +1,49 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+.App {
+  padding: 20px;
+
+  .room-list {
+    h4 {
+      margin-bottom: 0.25rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .room-info {
+      flex-grow: 1;
+      max-width: 300px;
+    }
+
+    .room-participants {
+      flex-grow: 1;
+
+      p {
+        text-align: right;
+      }
+    }
+
+    .room-link {
+      margin-top: 1rem;
+      width: 100%;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .room-info {
+      min-width: 300px;
+    }
+
+    .room-participants {
+      flex-grow: 1;
+    }
+  }
+}

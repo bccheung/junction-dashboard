@@ -14,22 +14,29 @@ module.exports = {
         baseConfig: {
           extends: ['plugin:prettier/recommended'],
           rules: {
-            "no-unused-vars": "off"
+            'no-console': 'off',
+            'no-nested-ternary': 'off'
           }
         }
       }
     }),
     react({
+      hot: false,
       html: {
-        title: 'junction-dashboard'
+        title: 'TCCC English - Junction Dashboard'
       },
-      env: [
-        "GSPREADSHEET_ID",
-        "GSHEET_ID",
-        "GCLIENT_EMAIL",
-        "GPRIVATE_KEY"
-      ]
+      style: {
+        test: /\.(css|sass|scss)$/,
+        modulesTest: /\.module\.(css|sass|scss)$/,
+        loaders: [
+          {
+            loader: "sass-loader",
+            useId: "sass"
+          }
+        ]
+      },
+      env: ['GSPREADSHEET_ID']
     }),
-    jest(),
+    jest()
   ],
 };
