@@ -66,7 +66,7 @@ function App() {
           <div className="room-link">
             <a
               href={`https://${item.url}`}
-              className={cx("btn", "btn-success", {
+              className={cx("btn", "btn-primary", {
                 "btn-danger disabled": item.status === "CLOSED",
                 "btn-warning": item.status === "FULL",
               })}
