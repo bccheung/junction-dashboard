@@ -7,11 +7,26 @@ module.exports = {
     root: __dirname,
   },
   use: [
-    airbnb(),
+    airbnb({
+      eslint: {
+        baseConfig: {
+          extends: ['plugin:prettier/recommended'],
+          rules: {
+            "no-unused-vars": "off"
+          }
+        }
+      }
+    }),
     react({
       html: {
         title: 'junction-dashboard'
-      }
+      },
+      env: [
+        "GSPREADSHEET_ID",
+        "GSHEET_ID",
+        "GCLIENT_EMAIL",
+        "GPRIVATE_KEY"
+      ]
     }),
     jest(),
   ],
