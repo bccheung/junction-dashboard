@@ -41,6 +41,10 @@ body {
   .btn {
     text-transform: uppercase;
 
+    &.btn-primary {
+      color: $white;
+    }
+
     &.btn-outline-primary:active,
     &.btn-outline-primary:hover {
       color: $white;
