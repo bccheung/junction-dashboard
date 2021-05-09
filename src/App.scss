@@ -1,10 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Bebas+Neue:400,400italic,700,700italic%7CBebas+Neue:400,400italic,700,700italic%7CBebas+Neue:400,400italic,700,700italic%7CMontserrat:300,300italic,700,700italic");
+$body-color: #505050;
+$font-family-base: "Montserrat", sans-serif;
+$font-weight-base: 300;
+$headings-color: #836aba;
+$headings-font-family: "Bebas Neue", sans-serif;
+$headings-font-weight: 400;
+$btn-padding-x: 2rem;
+$btn-disabled-opacity: 0.25;
+
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
 
 $custom-colors: (
-  "primary": $purple
+  "primary": #836aba
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
@@ -24,8 +34,21 @@ body {
 .App {
   padding: $spacer * 0.5;
 
-  .btn.disabled {
-    opacity: 0.25;
+  h1 {
+    text-align: center;
+  }
+
+  .btn {
+    text-transform: uppercase;
+
+    &.btn-outline-primary:active,
+    &.btn-outline-primary:hover {
+      color: $white;
+    }
+  }
+
+  .room-info p {
+    font-size: 0.85rem;
   }
 
   .room-list, .help-desk {
@@ -38,10 +61,14 @@ body {
     }
   }
 
+  .last-update {
+    font-size: 0.65rem;
+  }
+
   @include media-breakpoint-down(md) {
     .room-info {
       flex-grow: 1;
-      max-width: 300px;
+      max-width: 250px;
     }
 
     .help-desk .room-info {
@@ -68,7 +95,7 @@ body {
 
   @include media-breakpoint-up(md) {
     .room-info {
-      min-width: 300px;
+      min-width: 250px;
     }
 
     .room-participants {

@@ -23,8 +23,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className="alert alert-primary shadow-sm p-3 mb-3 d-flex align-items-center flex-wrap help-desk">
-        <div className="pe-5 room-info flex-grow-1">
+      <div className="alert alert-primary shadow-sm p-3 mb-5 d-flex align-items-center flex-wrap help-desk">
+        <div className="room-info flex-grow-1">
           <h4>First time joining us or need help?</h4>
           <p>
             The <em>Junction Support Desk</em> is here to help!
@@ -41,7 +41,7 @@ function App() {
           </a>
         </div>
       </div>
-      <h1 className="display-5 mb-3">Junction Rooms</h1>
+      <h1 className="display-3 mb-3">Junction Rooms</h1>
       {data.map((item, i) => (
         // eslint-disable-next-line
         <div className="bg-white border rounded-3 shadow-sm p-3 mb-2 d-flex align-items-center flex-wrap room-list" key={`key-${i}`}>
@@ -79,15 +79,19 @@ function App() {
         </div>
       ))}
       {data.length === 0 ? (
-        <div className="d-flex align-items-center mt-3">
+        <div className="d-flex align-items-center justify-content-center">
           <div>
-            <div className="spinner-border" role="status" aria-hidden="true" />
+            <div
+              className="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            />
           </div>
           <div className="ms-2">Loading Junction room list...</div>
         </div>
       ) : (
-        <p className="fw-light">
-          <small>Last updated: {lastUpdate.toLocaleString()}</small>
+        <p className="last-update fw-light">
+          Last updated: {lastUpdate.toLocaleString()}
         </p>
       )}
     </div>
