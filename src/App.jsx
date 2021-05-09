@@ -99,7 +99,7 @@ function App() {
           <div className="ms-2">Loading Junction room list...</div>
         </div>
       ) : (
-        <p className="last-update fw-light">
+        <p className="last-update text-center fw-light">
           Last updated: {lastUpdate.toLocaleString()}
         </p>
       )}
