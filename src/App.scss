@@ -1,7 +1,4 @@
 @import "~bootstrap/scss/functions";
-
-$success: #28a745;
-
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
@@ -21,36 +18,24 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "~bootstrap/scss/utilities/api";
 
 body {
-  background-color: #F3F5F7;
+  background-color: #f3f5f7;
 }
 
 .App {
-  padding: 20px;
+  padding: $spacer * 0.5;
 
   .btn.disabled {
     opacity: 0.25;
   }
 
-  .btn-success {
-    color: $white;
-  }
-
   .room-list, .help-desk {
     h4 {
-      margin-bottom: 0.25rem;
+      margin-bottom: $spacer * 0.25;
     }
 
     p:last-child {
       margin-bottom: 0;
     }
-  }
-
-  .help-desk svg symbol{
-    fill: $purple;
-  }
-
-  .room-participants p {
-    margin-bottom: 0.25rem !important;
   }
 
   @include media-breakpoint-down(md) {
@@ -72,7 +57,7 @@ body {
     }
 
     .room-link {
-      margin-top: 1rem;
+      margin-top: $spacer;
       width: 100%;
 
       .btn {
