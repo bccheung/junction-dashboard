@@ -80,12 +80,10 @@ function App() {
       ))}
       {data.length === 0 ? (
         <div className="d-flex align-items-center mt-3">
-          <div
-            className="spinner-border me-2"
-            role="status"
-            aria-hidden="true"
-          />
-          Loading Junction room list. Please wait a moment...
+          <div>
+            <div className="spinner-border" role="status" aria-hidden="true" />
+          </div>
+          <div className="ms-2">Loading Junction room list...</div>
         </div>
       ) : (
         <p className="fw-light">
