@@ -3,6 +3,15 @@ import cx from "classnames";
 import Tabletop from "tabletop";
 import "./App.scss";
 
+const ensureUrl = (url) => {
+  try {
+    const validateUrl = new URL(url);
+    return validateUrl.href;
+  } catch {
+    return `https://${url}`;
+  }
+};
+
 function App() {
   const [data, setData] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(new Date());
@@ -32,7 +41,7 @@ function App() {
         </div>
         <div className="room-link">
           <a
-            href="https://tccc.whereby.com/junction"
+            href={ensureUrl(process.env.JUNCTION_SUPPORT_URL)}
             className="btn btn-outline-primary"
             role="button"
             target="_PARENT"
@@ -65,7 +74,7 @@ function App() {
           </div>
           <div className="room-link">
             <a
-              href={`https://${item.url}`}
+              href={item.status === "CLOSED" ? "#" : ensureUrl(item.url)}
               className={cx("btn", "btn-primary", {
                 "btn-danger disabled": item.status === "CLOSED",
                 "btn-warning": item.status === "FULL",
@@ -73,7 +82,7 @@ function App() {
               role="button"
               target="_PARENT"
             >
-              Go to {item.name}
+              Join {item.name}
             </a>
           </div>
         </div>
@@ -90,7 +99,7 @@ function App() {
           <div className="ms-2">Loading Junction room list...</div>
         </div>
       ) : (
-        <p className="last-update fw-light">
+        <p className="last-update text-center fw-light">
           Last updated: {lastUpdate.toLocaleString()}
         </p>
       )}

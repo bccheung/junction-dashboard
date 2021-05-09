@@ -35,7 +35,7 @@ module.exports = {
           }
         ]
       },
-      env: ['GSPREADSHEET_ID']
+      env: ['GSPREADSHEET_ID', 'JUNCTION_SUPPORT_URL']
     }),
     jest()
   ],
