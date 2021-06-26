@@ -50,10 +50,10 @@ function App() {
           </a>
         </div>
       </div>
-      <h1 className="display-3 mb-3">Junction Rooms</h1>
+      <h2>Junction Rooms</h2>
       {data.map((item, i) => (
         // eslint-disable-next-line
-        <div className="bg-white border rounded-3 shadow-sm p-3 mb-2 d-flex align-items-center flex-wrap room-list" key={`key-${i}`}>
+        <div className="bg-white shadow-sm p-3 mb-2 d-flex align-items-center flex-wrap room-list" key={`key-${i}`}>
           <div className="pe-5 room-info">
             <h4>{item.name}</h4>
             {item.leads === "" ? null : (

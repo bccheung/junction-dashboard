@@ -1,12 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Bebas+Neue:400,400italic,700,700italic%7CBebas+Neue:400,400italic,700,700italic%7CBebas+Neue:400,400italic,700,700italic%7CMontserrat:300,300italic,700,700italic");
-$body-color: #505050;
-$font-family-base: "Montserrat", sans-serif;
-$font-weight-base: 300;
-$headings-color: #836aba;
-$headings-font-family: "Bebas Neue", sans-serif;
-$headings-font-weight: 400;
-$btn-padding-x: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+$body-color: #3A3A3A;
+$font-family-base: "Roboto", sans-serif;
+$font-weight-base: 400;
+$headings-color: #4D1055;
+$headings-font-family: "Roboto", sans-serif;
+$headings-font-weight: 900;
+$btn-padding-x: 3rem;
+$btn-padding-y: 0.7rem;
 $btn-disabled-opacity: 0.25;
+$btn-font-size: 1.1rem;
+$border-radius: 0;
 
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
@@ -14,7 +17,7 @@ $btn-disabled-opacity: 0.25;
 @import "~bootstrap/scss/utilities";
 
 $custom-colors: (
-  "primary": #836aba
+  "primary": #4D1055
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
@@ -34,8 +37,11 @@ body {
 .App {
   padding: $spacer * 0.5;
 
-  h1 {
+  h2 {
     text-align: center;
+    line-height: 1.1em;
+    margin-bottom: 2rem;
+    font-size: 3rem;
   }
 
   .btn {
@@ -58,6 +64,7 @@ body {
   .room-list, .help-desk {
     h4 {
       margin-bottom: $spacer * 0.25;
+      font-weight: 400;
     }
 
     p:last-child {
@@ -72,7 +79,7 @@ body {
   @include media-breakpoint-down(md) {
     .room-info {
       flex-grow: 1;
-      max-width: 250px;
+      max-width: 300px;
     }
 
     .help-desk .room-info {
@@ -99,7 +106,7 @@ body {
 
   @include media-breakpoint-up(md) {
     .room-info {
-      min-width: 250px;
+      min-width: 300px;
     }
 
     .room-participants {
