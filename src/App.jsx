@@ -12,6 +12,9 @@ const ensureUrl = (url) => {
   }
 };
 
+const sortNumParticipants = (a, b) =>
+  parseInt(a.current_participants, 10) - parseInt(b.current_participants, 10);
+
 function App() {
   const [data, setData] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(new Date());
@@ -23,7 +26,19 @@ function App() {
         simpleSheet: true,
       }) // get data from Google Sheets
         .then((response) => {
-          setData(response);
+          // Extract & sort family room(s), to be added to end of array later
+          const familyRooms = [];
+          response.forEach((item, index) => {
+            if (item.name.toLowerCase().includes("family")) {
+              familyRooms.push(item); // save a copy of the family room to new array
+              response.splice(index, 1); // remove room from original array
+            }
+          });
+          familyRooms.sort(sortNumParticipants);
+
+          response.sort(sortNumParticipants); // Sort remaining rooms
+
+          setData(response.concat(familyRooms)); // Combine reponse & familyRooms, then save
           setLastUpdate(new Date());
         })
         .catch((error) => console.warn(error));
