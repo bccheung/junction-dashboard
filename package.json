@@ -1,6 +1,6 @@
 {
   "name": "junction-dashboard",
-  "version": "2021.0.1",
+  "version": "2021.1.0",
   "description": "A simple front-end dashboard to display TCCC Junction table status",
   "main": "index.js",
   "scripts": {
