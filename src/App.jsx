@@ -26,6 +26,24 @@ function App() {
         simpleSheet: true,
       }) // get data from Google Sheets
         .then((response) => {
+          // Extract full rooms, to be added to end of array later
+          const fullRooms = [];
+          response.forEach((item, index) => {
+            if (item.status.toLowerCase() === "full") {
+              fullRooms.push(item); // save a copy of the full room to new array
+              response.splice(index, 1); // remove room from original array
+            }
+          });
+
+          // Extract closed rooms, to be added to end of array later
+          const closedRooms = [];
+          response.forEach((item, index) => {
+            if (item.status.toLowerCase() === "closed") {
+              closedRooms.push(item); // save a copy of the closed room to new array
+              response.splice(index, 1); // remove room from original array
+            }
+          });
+
           // Extract & sort family room(s), to be added to end of array later
           const familyRooms = [];
           response.forEach((item, index) => {
@@ -38,7 +56,9 @@ function App() {
 
           response.sort(sortNumParticipants); // Sort remaining rooms
 
-          setData(response.concat(familyRooms)); // Combine reponse & familyRooms, then save
+          setData(
+            response.concat(familyRooms).concat(fullRooms).concat(closedRooms)
+          ); // Combine room lists, then save
           setLastUpdate(new Date());
         })
         .catch((error) => console.warn(error));
