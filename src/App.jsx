@@ -12,6 +12,8 @@ const ensureUrl = (url) => {
   }
 };
 
+const sortRoomNames = (a, b) => a.name.localeCompare(b.name);
+
 const sortNumParticipants = (a, b) =>
   parseInt(a.current_participants, 10) - parseInt(b.current_participants, 10);
 
@@ -26,38 +28,28 @@ function App() {
         simpleSheet: true,
       }) // get data from Google Sheets
         .then((response) => {
-          // Extract full rooms, to be added to end of array later
+          const openRooms = [];
           const fullRooms = [];
-          response.forEach((item, index) => {
-            if (item.status.toLowerCase() === "full") {
-              fullRooms.push(item); // save a copy of the full room to new array
-              response.splice(index, 1); // remove room from original array
-            }
-          });
-
-          // Extract closed rooms, to be added to end of array later
           const closedRooms = [];
-          response.forEach((item, index) => {
-            if (item.status.toLowerCase() === "closed") {
-              closedRooms.push(item); // save a copy of the closed room to new array
-              response.splice(index, 1); // remove room from original array
-            }
-          });
-
-          // Extract & sort family room(s), to be added to end of array later
           const familyRooms = [];
-          response.forEach((item, index) => {
+          response.forEach((item) => {
             if (item.name.toLowerCase().includes("family")) {
               familyRooms.push(item); // save a copy of the family room to new array
-              response.splice(index, 1); // remove room from original array
+            } else if (item.status.toLowerCase() === "full") {
+              fullRooms.push(item); // save a copy of the full room to new array
+            } else if (item.status.toLowerCase() === "closed") {
+              closedRooms.push(item); // save a copy of the closed room to new array
+            } else {
+              openRooms.push(item);
             }
           });
+          fullRooms.sort(sortRoomNames);
+          closedRooms.sort(sortRoomNames);
           familyRooms.sort(sortNumParticipants);
-
-          response.sort(sortNumParticipants); // Sort remaining rooms
+          openRooms.sort(sortNumParticipants); // Sort remaining rooms
 
           setData(
-            response.concat(familyRooms).concat(fullRooms).concat(closedRooms)
+            openRooms.concat(fullRooms).concat(closedRooms).concat(familyRooms)
           ); // Combine room lists, then save
           setLastUpdate(new Date());
         })
